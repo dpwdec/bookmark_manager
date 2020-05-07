@@ -22,11 +22,20 @@ class Bookmark
   end
 
   def self.add(url, title)
-    connect_to_database.exec("INSERT INTO bookmarks(url, title) VALUES ('#{url}', '#{title}')")
+    connect_to_database.exec("INSERT INTO bookmarks(url, title) VALUES ('#{url}', '#{title}') RETURNING id, url, title").first
+  end
+
+  def self.update(id, url, title)
+    connect_to_database.exec("UPDATE bookmarks SET url = '#{url}', title = '#{title}' WHERE id = #{id} RETURNING id, url, title;").first
   end
 
   def self.delete(title)
     connect_to_database.exec("DELETE FROM bookmarks WHERE title = '#{title}'")
+  end
+
+  def self.get_by_id(id)
+    bookmark_data = connect_to_database.exec("SELECT * FROM bookmarks WHERE id = #{id}").first
+    Bookmark.new(bookmark_data['id'].to_i, bookmark_data['url'], bookmark_data['title'])
   end
 
   private

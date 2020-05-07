@@ -4,5 +4,5 @@ feature 'adding bookmarks' do
 
     expect(page).to have_content('http://www.testwebsite.com')
     expect(page).to have_content('Test Website:')
-  end  
+  end
 end

@@ -19,6 +19,7 @@
         <input type="hidden" name="title" value="<%= bookmark.title %>">
         <input type="submit" name="<%= bookmark.title %>" value="Delete">
       </form>
+      <a id="<%= bookmark.id %> edit" href="/bookmarks/<%= bookmark.id %>/edit">edit</a>
     </li>
   <% end %>
 </ol>
