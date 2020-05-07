@@ -40,7 +40,7 @@ describe Bookmark do
 
   describe 'title and url arguments' do
 
-    let(:subject) { described_class.new('http://www.makersacademy.com', 'Makers Academy')}
+    let(:subject) { described_class.new(1, 'http://www.makersacademy.com', 'Makers Academy')}
 
     it 'returns the title' do
       expect(subject.title).to eq ('Makers Academy')
@@ -48,6 +48,10 @@ describe Bookmark do
 
     it 'returns the url' do
       expect(subject.url).to eq ('http://www.makersacademy.com')
+    end
+
+    it 'return the id' do
+      expect(subject.id).to eq(1)
     end
   end
 end
