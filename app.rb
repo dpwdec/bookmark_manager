@@ -12,7 +12,7 @@ class BookmarkManager < Sinatra::Base
   end
 
   get '/' do
-    'Bookmark Manager'
+    redirect('/bookmarks')
   end
 
   get '/bookmarks' do
